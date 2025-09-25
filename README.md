@@ -1,11 +1,11 @@
-# Malcolm Hsu Technical Portfolio
+# Malcolm Hsu Portfolio
 
 Welcome to my technical portfolio!
 
 ## Contact Information:
-# Email: malcolmhsu@brandeis.edu
-# Cell: (408)839-7078
-# LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
+Email: malcolmhsu@brandeis.edu
+Cell: (408)839-7078
+LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 ## 📚 Table of Contents
 - [R](#R)

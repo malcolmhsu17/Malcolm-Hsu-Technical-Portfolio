@@ -19,6 +19,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
 | A Time Series Analysis of Firearm Innovation: U.S. Patent Count Tracking Since 1820(link here) | June 2025 - Present | R, Python | Description |
+| VanityFair Article: Gaston Glock Patent Analysis (link here) | June 2025 - Present | R, Python | Description |
 | Predicting Game Outcomes Using Sabermetric Models(link here) | June 2025 - Present | Python | Description |
 
 ***

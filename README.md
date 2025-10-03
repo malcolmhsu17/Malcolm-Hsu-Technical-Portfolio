@@ -16,16 +16,16 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 # Projects
 
-| Project Link | Completion Date | Tools | Project Description | 
+| Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
-| [A Time Series Analysis of Firearm Innovation: U.S. Patent Count Tracking Since 1820](link here) | June 2025 - Present | R, Python | Description |
-| [Predicting Game Outcomes Using Sabermetric Models](link here) | June 2025 - Present | Python | Description |
+| A Time Series Analysis of Firearm Innovation: U.S. Patent Count Tracking Since 1820(link here) | June 2025 - Present | R, Python | Description |
+| Predicting Game Outcomes Using Sabermetric Models(link here) | June 2025 - Present | Python | Description |
 
 ***
 
 # R
 
-| Project Link | Completion Date | Tools | Project Description | 
+| Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
 | [Project](link here) | Date | Tools | Description |
 
@@ -33,7 +33,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 # SQL
 
-| Project Link | Completion Date | Tools | Project Description | 
+| Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
 | [Project](link here) | Date | Tools | Description |
 
@@ -41,7 +41,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 # Python
 
-| Project Link | Completion Date | Tools | Project Description | 
+| Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
 | [Project](link here) | Date | Tools | Description |
 
@@ -49,7 +49,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 # Tableau
 
-| Project Link | Completion Date | Tools | Project Description | Dashboard Link |
+| Project & Link | Completion Date | Tools | Project Description | Dashboard Link |
 |---|---|---|---|---|
 | [Project](link here) | Date | Tools | Description | Dashboard link |
 

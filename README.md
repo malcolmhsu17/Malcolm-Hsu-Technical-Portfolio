@@ -28,7 +28,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
-| [Project](link here) | Date | Tools | Description |
+| [Pitch Classifications Model](link here) | Dec 2023 - May 2025 | R | Description |
 
 ***
 

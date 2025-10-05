@@ -9,13 +9,13 @@ Cell: (408)839-7078
 LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 ## 📚 Table of Contents
-- [Projects](#Projects)
+- [Research Projects](#ResearchProjects)
 - [R](#R)
 - [SQL](#sql)
 - [Python](#python)
 - [Tableau](#tableau)
 
-# Projects
+# Researh Projects
 
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|

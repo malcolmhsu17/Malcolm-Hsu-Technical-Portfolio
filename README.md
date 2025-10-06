@@ -32,6 +32,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
+| [MLB Statistics Paper](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/MLB%20Statistics%20Paper) | August 2023 - December 2023 | Stata | Description |
 | [Pitch Classifications Project](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Kinetic%20Performance%20Institute/Pitch%20Classifications) | Dec 2023 - May 2025 | R | Description |
 | [Visualizations Project](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Kinetic%20Performance%20Institute/Visualizations) | Dec 2023 - May 2025 | R | Description |
 | [Percentiles Project](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Kinetic%20Performance%20Institute/Percentiles%20Project) | Dec 2023 - May 2025 | R | Description |

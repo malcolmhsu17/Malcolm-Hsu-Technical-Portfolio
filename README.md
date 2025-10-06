@@ -32,7 +32,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
-| [Kinetic Performance Institute](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Kinetic%20Performance%20Institute) | Dec 2023 - May 2025 | R | Description |
+| [Kinetic Performance Institute](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Kinetic%20Performance%20Institute/Pitch%20Classifications) | Dec 2023 - May 2025 | R | Description |
 
 ***
 

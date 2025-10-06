@@ -20,7 +20,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
 | [Forecasting Firearm Innovation: A Time Series Analysis of U.S. Patent Trends and Macroeconomic Influencers, 1820-2025](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Patent%20Project) | June 2025 - Present | R, Python | Description |
-| [VanityFair Article: Gaston Glock Patent Analysis](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Vanity%20Fair%20Glock%20Project) | June 2025 - Present | R, Python | Description |
+| [Vanity Fair Article: Gaston Glock Patent Analysis](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Vanity%20Fair%20Glock%20Project) | June 2025 - Present | R, Python | Description |
 | [Predicting Game Outcomes Using Sabermetric Models](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Sabermetrics) | June 2025 - Present | Python | Description |
 
 ***

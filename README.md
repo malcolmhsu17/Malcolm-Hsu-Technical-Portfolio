@@ -10,6 +10,7 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 ## 📚 Table of Contents
 - [Research Projects](#ResearchProjects)
+- [Baseball Analytics](#BaseballAnalytics)
 - [R](#R)
 - [SQL](#sql)
 - [Python](#python)
@@ -27,11 +28,19 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 ***
 
+# Baseball Analytics
+
+| Project & Link | Completion Date | Tools | Project Description | 
+|---|---|---|---|
+| [Kinetic Performance Institute](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Kinetic%20Performance%20Institute) | Dec 2023 - May 2025 | R | Description |
+
+***
+
 # R
 
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
-| [Pitch Classifications Model](link here) | Dec 2023 - May 2025 | R | Description |
+| [Project](link here) | Dec 2023 - May 2025 | R | Description |
 
 ***
 

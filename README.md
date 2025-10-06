@@ -8,7 +8,7 @@ Email: malcolmhsu@brandeis.edu
 Cell: (408)839-7078
 LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
-## 📚 Table of Contents
+## Table of Contents
 - [Research Projects](#Research)
 - [Baseball Analytics](#Baseball)
 - [R](#R)

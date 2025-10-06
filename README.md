@@ -15,13 +15,15 @@ LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 - [Python](#python)
 - [Tableau](#tableau)
 
-# Researh Projects
+# Research Projects
 
 | Project & Link | Completion Date | Tools | Project Description | 
 |---|---|---|---|
 | [Forecasting Firearm Innovation: A Time Series Analysis of U.S. Patent Trends and Macroeconomic Influencers, 1820-2025](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Patent%20Project) | June 2025 - Present | R, Python | Description |
 | [Vanity Fair Article: Gaston Glock Patent Analysis](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Vanity%20Fair%20Glock%20Project) | June 2025 - Present | R, Python | Description |
 | [Predicting Game Outcomes Using Sabermetric Models](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Sabermetrics) | June 2025 - Present | Python | Description |
+| [Identifying the Relationship Between Macroeconomic Signals and the California Housing Market Surrounding Economic Downturns in the 21st Century](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/California%20Housing%20Market) | January 2025 - May 2025 | R | Description |
+| [The Effect of Remote Work on Wage Dispersion: The Repercussions of the Pandemic on Job Industries](https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/blob/main/Remote%20Work%20Wage%20Dispersion) | August 2024 - December 2024 | Stata | Description |
 
 ***
 

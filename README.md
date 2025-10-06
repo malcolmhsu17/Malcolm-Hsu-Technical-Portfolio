@@ -9,8 +9,8 @@ Cell: (408)839-7078
 LinkedIn: https://www.linkedin.com/in/malcolm-hsu/
 
 ## 📚 Table of Contents
-- [Research Projects](#ResearchProjects)
-- [Baseball Analytics](#BaseballAnalytics)
+- [Research Projects](#Research%20Projects)
+- [Baseball Analytics](#Baseball%20Analytics)
 - [R](#R)
 - [SQL](#sql)
 - [Python](#python)

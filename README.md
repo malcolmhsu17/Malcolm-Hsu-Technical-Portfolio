@@ -1,4 +1,4 @@
-# Malcolm Hsu Portfolio
+# Malcolm Hsu Technical Portfolio
 
 Welcome to my technical portfolio! I am a first year master of science in business analytics candidate at Brandeis University. As an undergraduate at Wesleyan University I double majored in math and economics and was also a member of the varsity baseball team. I am extremely passionate about using predictive modeling to leverage metrics and big data to provide actionable insights for companies and their clients to enhance performance and business decisions. Moving forward, I would love to stay in sports analytics or the health and wellness industry in the Boston area. 
 

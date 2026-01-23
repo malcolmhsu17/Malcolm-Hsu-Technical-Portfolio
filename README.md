@@ -1,6 +1,6 @@
 # Malcolm Hsu Technical Portfolio
 
-Welcome to my technical portfolio! I am a first year Master of Science in Business Analytics candidate at Brandeis University, concentrating in Artificial Intelligence. As an undergraduate at Wesleyan University I double majored in Mathematics and Economics and was also a captain on the varsity baseball team. I am extremely passionate about using time series analysis and AI/ML methods to leverage metrics and big data to provide actionable insights for companies and their clients to enhance performance and business decisions. I have advanced proficiencies in R, Python, SQL, Tableau, Stata, and Excel.
+Welcome to my technical project portfolio! I am a first year Master of Science in Business Analytics candidate at Brandeis University, concentrating in Artificial Intelligence and graduating in May 2026. As an undergraduate at Wesleyan University I double majored in Mathematics and Economics and was also a captain on the varsity baseball team. I am extremely passionate about using time series analysis and AI/ML methods to leverage metrics and big data to provide actionable insights for companies and their clients to enhance performance and business decisions. I have advanced proficiencies in R, Python, SQL, Tableau, Stata, and Excel. More specifically, I have extensive experience with and am passionate about LLM training and fine tuning, generative AI models, RAG development, and big data management.
 
 
 ## Contact Information:

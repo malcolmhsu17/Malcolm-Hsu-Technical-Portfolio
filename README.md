@@ -1,7 +1,6 @@
 <div align="center">
 
 # Malcolm Hsu
-### Data Scientist · AI/ML Researcher · Baseball Analyst
 
 *MS Candidate in Artificial Intelligence @ Brandeis University · Graduating May 2026*
 

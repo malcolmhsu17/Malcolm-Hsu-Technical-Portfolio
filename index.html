@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Malcolm Hsu — Data Science & AI Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #080b10;
+      --bg2: #0d1117;
+      --bg3: #111823;
+      --surface: #141c26;
+      --border: rgba(99, 179, 237, 0.12);
+      --accent: #63b3ed;
+      --accent2: #f6ad55;
+      --accent3: #68d391;
+      --text: #e2e8f0;
+      --text-muted: #718096;
+      --text-dim: #4a5568;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Syne', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(8, 11, 16, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8rem 4rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(99,179,237,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99,179,237,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99,179,237,0.07) 0%, transparent 70%);
+      top: -100px;
+      right: -150px;
+      pointer-events: none;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(246,173,85,0.05) 0%, transparent 70%);
+      bottom: 50px;
+      left: -100px;
+      pointer-events: none;
+    }
+
+    .hero-tag {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.2s;
+    }
+
+    .hero-tag::before {
+      content: '//';
+      margin-right: 0.5em;
+      opacity: 0.5;
+    }
+
+    .hero-name {
+      font-family: var(--display);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.35s;
+    }
+
+    .hero-name span {
+      display: block;
+      background: linear-gradient(135deg, #e2e8f0 0%, #63b3ed 60%, #f6ad55 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 680px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.5s;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.65s;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.8s;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: #90cdf4;
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 5rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 1s;
+    }
+
+    .stat-item {}
+
+    .stat-num {
+      font-family: var(--display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-num span { color: var(--accent); }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 6rem 4rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section-tag::before {
+      content: '//';
+      margin-right: 0.4em;
+      opacity: 0.5;
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    /* ── SKILLS ── */
+    .skills-section {
+      background: var(--bg2);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .skill-card {
+      background: var(--bg2);
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+
+    .skill-card:hover {
+      background: var(--surface);
+    }
+
+    .skill-icon {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-category {
+      font-family: var(--display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-blue { background: rgba(99,179,237,0.1); color: var(--accent); border: 1px solid rgba(99,179,237,0.2); }
+    .tag-orange { background: rgba(246,173,85,0.1); color: var(--accent2); border: 1px solid rgba(246,173,85,0.2); }
+    .tag-green { background: rgba(104,211,145,0.1); color: var(--accent3); border: 1px solid rgba(104,211,145,0.2); }
+    .tag-gray { background: rgba(113,128,150,0.1); color: var(--text-muted); border: 1px solid rgba(113,128,150,0.2); }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(99,179,237,0.3);
+      transform: translateY(-3px);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-card.featured {
+      grid-column: span 2;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-domain {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .project-year {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+    }
+
+    .project-title {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+      line-height: 1.3;
+    }
+
+    .project-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-link {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .project-arrow {
+      transition: transform 0.2s;
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translateX(4px);
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-section {
+      background: var(--bg2);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2rem;
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg2);
+      box-shadow: 0 0 0 3px rgba(99,179,237,0.15);
+    }
+
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-org {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-role {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .timeline-bullets {
+      list-style: none;
+    }
+
+    .timeline-bullets li {
+      font-size: 0.87rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      padding-left: 1.2rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 2rem;
+    }
+
+    .edu-school {
+      font-family: var(--display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-degree {
+      font-size: 0.9rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .edu-date {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-bottom: 1.2rem;
+    }
+
+    .edu-courses {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .edu-courses strong {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      text-align: center;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-glow {
+      position: absolute;
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse, rgba(99,179,237,0.06) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .contact-section .section-title {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 4rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--bg2);
+    }
+
+    footer span {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--text-dim); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      section { padding: 4rem 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .hero-stats { gap: 2rem; flex-wrap: wrap; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">malcolm_hsu.portfolio</div>
+    <ul class="nav-links">
+      <li><a href="#skills">skills</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#experience">experience</a></li>
+      <li><a href="#education">education</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="hero-tag">Data Scientist · AI/ML Researcher · Baseball Analyst</div>
+    <h1 class="hero-name"><span>Malcolm Hsu</span></h1>
+    <p class="hero-title">MS Candidate in AI at Brandeis University — turning messy data into rigorous insight.</p>
+    <p class="hero-desc">
+      I build machine learning models, time series forecasting systems, and LLM pipelines across economics, sports analytics, and trade policy. Former varsity baseball captain with a deep belief that quantitative methods belong on the field as much as in the lab.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="https://www.linkedin.com/in/malcolm-hsu/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">5<span>+</span></div>
+        <div class="stat-label">Research Projects</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">200<span>yrs</span></div>
+        <div class="stat-label">Patent Data Analyzed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3<span>+</span></div>
+        <div class="stat-label">Academic Publications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">MIT</div>
+        <div class="stat-label">Sloan Conference 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills-section" id="skills">
+    <div class="section-header fade-in">
+      <div class="section-tag">Technical Skills</div>
+      <div class="section-line"></div>
+    </div>
+    <h2 class="section-title fade-in">Languages & Tools</h2>
+
+    <div class="skills-grid fade-in" style="margin-top:2rem">
+      <div class="skill-card">
+        <div class="skill-icon">⚙️</div>
+        <div class="skill-category">Programming Languages</div>
+        <div class="skill-tags">
+          <span class="tag tag-blue">Python</span>
+          <span class="tag tag-blue">R</span>
+          <span class="tag tag-blue">SQL</span>
+          <span class="tag tag-blue">Stata</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <div class="skill-category">AI / Machine Learning</div>
+        <div class="skill-tags">
+          <span class="tag tag-orange">PyTorch</span>
+          <span class="tag tag-orange">TensorFlow</span>
+          <span class="tag tag-orange">Transformers</span>
+          <span class="tag tag-orange">LLM Fine-Tuning</span>
+          <span class="tag tag-orange">RAG</span>
+          <span class="tag tag-orange">Neural Networks</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📈</div>
+        <div class="skill-category">Econometrics & Time Series</div>
+        <div class="skill-tags">
+          <span class="tag tag-green">ARIMA / ARIMAX</span>
+          <span class="tag tag-green">TAR / SETAR</span>
+          <span class="tag tag-green">VAR</span>
+          <span class="tag tag-green">Markov Models</span>
+          <span class="tag tag-green">Spectral Analysis</span>
+          <span class="tag tag-green">Event Studies</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <div class="skill-category">Data Engineering</div>
+        <div class="skill-tags">
+          <span class="tag tag-gray">API Integration</span>
+          <span class="tag tag-gray">Window Functions</span>
+          <span class="tag tag-gray">CTEs</span>
+          <span class="tag tag-gray">Pandas</span>
+          <span class="tag tag-gray">NumPy</span>
+          <span class="tag tag-gray">SciPy</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">📊</div>
+        <div class="skill-category">Visualization & Analytics</div>
+        <div class="skill-tags">
+          <span class="tag tag-blue">Tableau</span>
+          <span class="tag tag-blue">ggplot2</span>
+          <span class="tag tag-blue">matplotlib</span>
+          <span class="tag tag-blue">tidyverse</span>
+          <span class="tag tag-blue">Scikit-learn</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon">⚾</div>
+        <div class="skill-category">Sports Analytics Platforms</div>
+        <div class="skill-tags">
+          <span class="tag tag-orange">Trackman</span>
+          <span class="tag tag-orange">NewtForce</span>
+          <span class="tag tag-orange">Edgertronic</span>
+          <span class="tag tag-orange">HitTrax</span>
+          <span class="tag tag-orange">FanGraphs</span>
+          <span class="tag tag-orange">Baseball Reference</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header fade-in">
+      <div class="section-tag">Projects & Research</div>
+      <div class="section-line"></div>
+    </div>
+    <h2 class="section-title fade-in">Selected Work</h2>
+
+    <div class="projects-grid" style="margin-top:2rem">
+
+      <!-- FEATURED: Patent Project -->
+      <a class="project-card featured fade-in" href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/tree/main/Patent%20Project" target="_blank">
+        <div class="project-meta">
+          <span class="project-domain">Time Series · Econometrics</span>
+          <span class="project-year">Jun 2025 – Present</span>
+        </div>
+        <div class="project-title">Forecasting Firearm Innovation: A Time Series Analysis of U.S. Patent Trends & Macroeconomic Influencers, 1820–2025</div>
+        <div class="project-desc">
+          Built an end-to-end analytics pipeline studying 200 years of firearm-related patent trends. Engineered monthly patent count time series, connected outcomes to macro/conflict drivers (GDP, military expenditure, arms trade), and implemented a full modeling stack including ARIMA/FARIMA, TAR/SETAR, Markov regime-switching, and spectral analysis. Contributing to forthcoming academic publications with Wesleyan's Center for the Study of Guns & Society and an upcoming Vanity Fair feature.
+        </div>
+        <div class="project-tools">
+          <span class="tag tag-blue">R</span>
+          <span class="tag tag-blue">Python</span>
+          <span class="tag tag-green">ARIMA/FARIMA</span>
+          <span class="tag tag-green">TAR/SETAR</span>
+          <span class="tag tag-green">Markov Switching</span>
+          <span class="tag tag-green">Spectral Analysis</span>
+          <span class="tag tag-orange">Negative Binomial</span>
+          <span class="tag tag-gray">comtradr API</span>
+          <span class="tag tag-gray">ggplot2</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link">View Project <span class="project-arrow">→</span></span>
+          <span class="tag tag-orange">Featured Research</span>
+        </div>
+      </a>
+
+      <!-- Tariff / LLM -->
+      <a class="project-card fade-in" href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/tree/main/Semiconductor%20Industry%20%26%20Tariff%20Actions" target="_blank">
+        <div class="project-meta">
+          <span class="project-domain">NLP · Empirical Finance</span>
+          <span class="project-year">Aug 2025 – Present</span>
+        </div>
+        <div class="project-title">Trade Policy Shocks & Market Reactions: LLM-Derived Measures of USTR Tariff Announcements</div>
+        <div class="project-desc">
+          Fine-tuned an LLM on a USTR Section 301 tariff corpus to extract structured severity/surprise scores from policy text. Implemented market-model event studies on semiconductor equities, estimating cumulative abnormal returns with cluster-robust inference. Results suggest markets respond more to information resolution than raw policy intensity.
+        </div>
+        <div class="project-tools">
+          <span class="tag tag-blue">Python</span>
+          <span class="tag tag-orange">Ollama 3.2</span>
+          <span class="tag tag-orange">LLM Fine-Tuning</span>
+          <span class="tag tag-green">Event Study</span>
+          <span class="tag tag-green">CAR Regression</span>
+          <span class="tag tag-gray">yfinance</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link">View Project <span class="project-arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- Sabermetrics -->
+      <a class="project-card fade-in" href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/tree/main/Sabermetrics" target="_blank">
+        <div class="project-meta">
+          <span class="project-domain">Sports Analytics · ML</span>
+          <span class="project-year">Jun 2025 – Present</span>
+        </div>
+        <div class="project-title">Predictive Framework for Run Production & Game Outcomes in MLB</div>
+        <div class="project-desc">
+          Developed decision trees and outcome state models to predict run expectancy and game outcomes from situational game data. Processed large datasets from FanGraphs, Baseball Reference, and RetroSheet. Contributing to an academic paper accepted for MIT Sloan Sports Analytics Conference 2026.
+        </div>
+        <div class="project-tools">
+          <span class="tag tag-blue">Python</span>
+          <span class="tag tag-blue">SQL</span>
+          <span class="tag tag-orange">Decision Trees</span>
+          <span class="tag tag-orange">ML Classification</span>
+          <span class="tag tag-gray">FanGraphs</span>
+          <span class="tag tag-gray">RetroSheet</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link">View Project <span class="project-arrow">→</span></span>
+          <span class="tag tag-green">MIT Sloan 2026</span>
+        </div>
+      </a>
+
+      <!-- CA Housing -->
+      <a class="project-card fade-in" href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/tree/main/California%20Housing%20Market" target="_blank">
+        <div class="project-meta">
+          <span class="project-domain">Time Series · Econometrics</span>
+          <span class="project-year">Jan – May 2025</span>
+        </div>
+        <div class="project-title">Macroeconomic Signals & the California Housing Market Around Economic Downturns</div>
+        <div class="project-desc">
+          Analyzed how the 2008 Financial Crisis and COVID-19 affected California's housing market using monthly Zillow data (2004–2024). Applied ARIMA, SARIMAX, TAR, VAR, Markov Switching, and spline/Fourier regression models. Identified inflation, mortgage rates, and unemployment as key drivers of housing price fluctuations.
+        </div>
+        <div class="project-tools">
+          <span class="tag tag-blue">R</span>
+          <span class="tag tag-green">VAR</span>
+          <span class="tag tag-green">SARIMAX</span>
+          <span class="tag tag-green">Markov Switching</span>
+          <span class="tag tag-gray">Zillow Data</span>
+          <span class="tag tag-gray">Rolling CV</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link">View Project <span class="project-arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- Pitch Classifications -->
+      <a class="project-card fade-in" href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/tree/main/Kinetic%20Performance%20Institute/Pitch%20Classifications" target="_blank">
+        <div class="project-meta">
+          <span class="project-domain">Sports Analytics · Clustering</span>
+          <span class="project-year">Dec 2023 – May 2025</span>
+        </div>
+        <div class="project-title">Pitch Classification & Repertoire Analysis (Kinetic Performance Institute)</div>
+        <div class="project-desc">
+          Built a clustering framework to classify and evaluate pitch types from Trackman data. Processed velocity, spin rate, movement metrics, and release characteristics. Computed percentile benchmarks and visualized repertoire alignment with professional standards to guide individualized pitcher development.
+        </div>
+        <div class="project-tools">
+          <span class="tag tag-blue">R</span>
+          <span class="tag tag-orange">K-Means Clustering</span>
+          <span class="tag tag-orange">Percentile Modeling</span>
+          <span class="tag tag-gray">Trackman</span>
+          <span class="tag tag-gray">ggplot2</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link">View Project <span class="project-arrow">→</span></span>
+        </div>
+      </a>
+
+      <!-- Remote Work / Wage -->
+      <a class="project-card fade-in" href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio/tree/main/Remote%20Work%20Wage%20Dispersion" target="_blank">
+        <div class="project-meta">
+          <span class="project-domain">Econometrics · Labor Economics</span>
+          <span class="project-year">Aug – Dec 2024</span>
+        </div>
+        <div class="project-title">The Effect of Remote Work on Wage Dispersion Post-Pandemic</div>
+        <div class="project-desc">
+          Examined how COVID-19's remote work shift reshaped wage structures using ACS/IPUMS data (2018–2022). OLS regressions, interaction models, and IV estimation across finance, professional services, construction, and agriculture. Found remote work amplified existing wage inequality in technology-intensive sectors.
+        </div>
+        <div class="project-tools">
+          <span class="tag tag-blue">Stata</span>
+          <span class="tag tag-green">IV Estimation</span>
+          <span class="tag tag-green">OLS Regression</span>
+          <span class="tag tag-gray">ACS / IPUMS</span>
+        </div>
+        <div class="project-footer">
+          <span class="project-link">View Project <span class="project-arrow">→</span></span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="experience-section" id="experience">
+    <div class="section-header fade-in">
+      <div class="section-tag">Work Experience</div>
+      <div class="section-line"></div>
+    </div>
+    <h2 class="section-title fade-in">Where I've Worked</h2>
+
+    <div class="timeline" style="margin-top:2rem">
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-date">Jun 2025 – Present</div>
+        <div class="timeline-org">Wesleyan University — Quantitative Analysis Center</div>
+        <div class="timeline-role">Research Fellow · Middletown, CT</div>
+        <ul class="timeline-bullets">
+          <li>Built ARIMAX, TAR, VAR, and Markov models to analyze and forecast 200 years of U.S. firearm patents, identifying innovation state spaces and significant macroeconomic indicators.</li>
+          <li>Created interactive visualizations and dashboards mapping patent trends to major historical events, improving accessibility for both technical and non-technical audiences.</li>
+          <li>Assisted in developing a domain-specific LLM and RAG pipeline to automate data collection and increase extraction accuracy.</li>
+          <li>Presented findings to professionals; contributing to forthcoming academic publications with Wesleyan's Center for the Study of Guns & Society.</li>
+          <li>Leveraged APIs to merge complex media datasets with global firearm patents for an upcoming Vanity Fair publication.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-date">Jun 2025 – Present</div>
+        <div class="timeline-org">Brandeis University</div>
+        <div class="timeline-role">Research Assistant · Waltham, MA</div>
+        <ul class="timeline-bullets">
+          <li>Processed and cleaned large baseball datasets from FanGraphs, Baseball Reference, and RetroSheet using Python and SQL.</li>
+          <li>Developed run expectancy and scoring probability predictive models to quantify the impact of in-game offensive decision making.</li>
+          <li>Created instructional materials and presentations on Sabermetrics for academic use.</li>
+          <li>Contributing to an academic paper accepted for MIT's Sloan Sports Analytics Conference (2026).</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item fade-in">
+        <div class="timeline-date">Dec 2023 – May 2025</div>
+        <div class="timeline-org">Kinetic Performance Institute</div>
+        <div class="timeline-role">Lead Data Analyst · Morgan Hill, CA</div>
+        <ul class="timeline-bullets">
+          <li>Identified key performance indicators from data collection platforms to inform decision makers and support coaching decisions.</li>
+          <li>Designed athlete performance dashboards using R/Python visualization libraries, enabling coaches to monitor real-time trends.</li>
+          <li>Engineered data pipelines integrating ball-tracking and biomechanics data (Trackman, NewtForce, Edgertronic).</li>
+          <li>Built predictive models to recommend individualized training regimens, increasing training efficiency for athletes.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-header fade-in">
+      <div class="section-tag">Education</div>
+      <div class="section-line"></div>
+    </div>
+    <h2 class="section-title fade-in">Academic Background</h2>
+
+    <div class="edu-grid" style="margin-top:2rem">
+      <div class="edu-card fade-in">
+        <div class="edu-school">Brandeis University</div>
+        <div class="edu-degree">MS in Business Analytics — Concentration: Artificial Intelligence</div>
+        <div class="edu-date">Aug 2025 – May 2026 · Waltham, MA</div>
+        <div class="edu-courses">
+          <strong>Relevant Coursework</strong>
+          Generative AI · Machine Learning · Advanced Data Analytics · Advanced Quantitative Analysis in Finance
+        </div>
+      </div>
+      <div class="edu-card fade-in">
+        <div class="edu-school">Wesleyan University</div>
+        <div class="edu-degree">BA in Mathematics & Economics (Double Major)</div>
+        <div class="edu-date">Sep 2022 – May 2025 · Middletown, CT</div>
+        <div class="edu-courses">
+          <strong>Relevant Coursework</strong>
+          Applied Time Series Analysis · Advanced Econometrics · Probability · Advanced Topics in Real Analysis
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="margin-top:3rem; padding:2rem; background:var(--surface); border:1px solid var(--border); border-radius:6px; display:flex; flex-wrap:wrap; gap:3rem; align-items:center">
+      <div>
+        <div style="font-family:var(--mono);font-size:0.7rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Activities</div>
+        <div style="font-size:0.9rem;color:var(--text-muted)">Varsity Baseball Captain — Brandeis University (2025–Present) & Wesleyan University (2022–2025)<br>Co-founder, Brandeis Sports Analytics Club (2025–Present)</div>
+      </div>
+      <div>
+        <div style="font-family:var(--mono);font-size:0.7rem;color:var(--text-dim);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Awards</div>
+        <div style="font-size:0.9rem;color:var(--text-muted)">🏆 San Francisco Giants Ambassador All-Star Award (2022) — Outstanding Community Service</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-glow"></div>
+    <div class="section-header fade-in" style="justify-content:center; border:none">
+      <div class="section-tag">Get In Touch</div>
+    </div>
+    <h2 class="section-title fade-in">Let's Connect</h2>
+    <p class="fade-in" style="color:var(--text-muted);max-width:480px;margin:1rem auto 0;font-size:0.95rem">
+      I'm always open to discussing research collaborations, data science roles, and baseball analytics projects.
+    </p>
+    <div class="contact-links fade-in">
+      <a href="mailto:hsum1328@gmail.com" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        hsum1328@gmail.com
+      </a>
+      <a href="https://www.linkedin.com/in/malcolm-hsu/" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/malcolmhsu17/Malcolm-Hsu-Technical-Portfolio" target="_blank" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="tel:4088397078" class="contact-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l1.17-1.17a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        (408) 839-7078
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Malcolm Hsu</span>
+    <span>Waltham, MA</span>
+    <span>Built with HTML · CSS · JS</span>
+  </footer>
+
+  <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth active nav highlighting
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(l => l.style.color = '');
+          const activeLink = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+          if (activeLink) activeLink.style.color = 'var(--accent)';
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => navObserver.observe(s));
+  </script>
+</body>
+</html>
